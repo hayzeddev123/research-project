@@ -1,232 +1,152 @@
-# AWS Research Project
+# AWS Research Project – Critical Thinking
 
 **Author:** Adeniyi Abdulazeez (`hayzeddev123`)  
 **Date:** August 2026  
-**Topic:** Introduction to Cloud Computing Concepts – Critical Thinking Questions
+**Topic:** Cloud Storage, Amazon S3, Security Strategy & Disaster Recovery
 
 ---
 
-## 1. What is Cloud Computing?
+## 1. Cloud Storage and Amazon S3
 
-**Definition (in my own words):**  
-Cloud computing is the delivery of computing resources (such as servers, storage, databases, networking, software, and analytics) over the internet on a pay-as-you-go basis. Instead of owning and maintaining physical hardware, users can access these resources from a cloud provider whenever they need them.
+### a) Types of Cloud Storage
 
-**Basic Characteristics:**
-- **On-demand self-service** – Users can provision resources without human interaction with the provider.
-- **Broad network access** – Resources are available over the network from anywhere.
-- **Resource pooling** – Multiple customers share the provider’s resources (multi-tenancy).
-- **Rapid elasticity / Scalability** – Resources can be scaled up or down quickly based on demand.
-- **Measured service** – Usage is monitored and billed based on actual consumption.
+* **Block storage**: Stores data in blocks and is commonly used for virtual machines and databases.  
+  **Example:** Amazon EBS.
 
-**Difference from Traditional On-Premise Infrastructure:**
-| Aspect              | Traditional On-Premise                  | Cloud Computing                          |
-|---------------------|-----------------------------------------|------------------------------------------|
-| Ownership           | Organization owns and maintains hardware | Provider owns the hardware               |
-| Upfront Cost        | High capital expenditure (CapEx)        | Low or no upfront cost (OpEx)            |
-| Scalability         | Slow and expensive                      | Fast and elastic                         |
-| Maintenance         | Handled by internal IT team             | Handled by cloud provider                |
-| Accessibility       | Limited to company network              | Accessible from anywhere via internet    |
-| Payment Model       | Buy and maintain servers                | Pay only for what you use                |
+* **File storage**: Stores data as files in folders.  
+  **Example:** Amazon EFS.
 
----
+* **Object storage**: Stores data as objects with metadata.  
+  **Example:** Amazon S3.
 
-## 2. Types of Cloud Computing Services
+Amazon S3 is an **object storage** service.
 
-### Infrastructure as a Service (IaaS)
-Provides virtualized computing resources over the internet (servers, storage, networking).
+### b) Key Features of Amazon S3
 
-- **Examples:** Amazon EC2, Amazon S3, Google Compute Engine, Microsoft Azure Virtual Machines
-- **Use Cases:** Lift-and-shift migration of existing applications, development/test environments, custom infrastructure that needs full control over the operating system.
+* **Durability**: Designed to prevent data loss (11 nines of durability).
+* **Availability**: Data can be accessed when needed.
+* **Scalability**: Can store very large amounts of data without capacity planning.
+* **Security**: Supports encryption, IAM, bucket policies, and access controls.
 
-### Platform as a Service (PaaS)
-Provides a platform for developing, running, and managing applications without managing the underlying infrastructure.
+### c) S3 vs Google Cloud Storage and Azure Blob Storage
 
-- **Examples:** AWS Elastic Beanstalk, Google App Engine, Heroku, Azure App Service
-- **Use Cases:** Application development and deployment, especially for web and mobile apps where developers want to focus only on code.
+Amazon S3, Google Cloud Storage, and Azure Blob Storage are all object storage services.  
+Their main differences are:
 
-### Software as a Service (SaaS)
-Delivers complete software applications over the internet on a subscription basis.
+* The cloud provider ecosystem
+* Pricing models
+* Available features and storage classes
+* Integration with their respective cloud services
 
-- **Examples:** Gmail, Microsoft 365, Salesforce, Dropbox, Zoom
-- **Use Cases:** End-user applications where no installation or maintenance is required by the customer.
+### d) Benefits of Amazon S3
 
-**Summary Hierarchy:**  
-IaaS (most control) → PaaS → SaaS (least control / most managed)
+* Cost-effective
+* Highly scalable
+* Easy to use
+* Flexible storage classes and lifecycle options
+* Integrates with many AWS services
 
----
+### e) S3 Integration with AWS Services
 
-## 3. Cloud Deployment Models
+* **IAM**: Controls who can access S3 resources.
+* **Bucket policies**: Define fine-grained access to buckets and objects.
+* **EC2**: Applications running on EC2 can store and retrieve files from S3.
+* **CloudFront**: Delivers S3 content faster to users through a global CDN.
+* **Lambda**: Can automatically perform actions when objects are uploaded or changed (event-driven).
 
-### Public Cloud
-Resources are owned and operated by a third-party provider and shared among multiple customers over the internet.
+### f) S3 Best Practices
 
-- **When to use:** Startups, variable workloads, cost-sensitive projects, applications that do not require strict data isolation.
-
-### Private Cloud
-Cloud infrastructure is used exclusively by a single organization. It can be hosted on-premises or by a third party.
-
-- **When to use:** Highly regulated industries (banking, healthcare, government), applications with strict security or compliance requirements.
-
-### Hybrid Cloud
-A combination of public and private clouds that allows data and applications to be shared between them.
-
-- **When to use:** Organizations that want to keep sensitive data private while using public cloud for less critical workloads, or for cloud bursting during peak demand.
+* Enable encryption (SSE-S3, SSE-KMS, or client-side).
+* Use IAM and bucket policies to control access.
+* Avoid making sensitive buckets public.
+* Enable versioning where appropriate.
+* Use lifecycle rules to move or delete old data automatically.
+* Monitor access and activity using CloudTrail and S3 access logs.
 
 ---
 
-## 4. Benefits of Cloud Computing
+## 2. Storage Solution for a Large E-Commerce Website
 
-Compared to traditional data centers, cloud computing offers:
+**Recommendation:** Amazon S3 combined with Amazon CloudFront.
 
-- **Cost Efficiency** – No large capital investment in hardware. Pay only for what you use.
-- **Scalability & Elasticity** – Easily scale resources up or down based on demand.
-- **Reliability & High Availability** – Cloud providers offer multiple Availability Zones and Regions with built-in redundancy.
-- **Speed of Deployment** – Resources can be provisioned in minutes instead of weeks or months.
-- **Global Reach** – Deploy applications close to users worldwide.
-- **Automatic Updates & Maintenance** – Provider handles hardware maintenance, security patches, and upgrades.
-- **Disaster Recovery** – Easier and cheaper to implement backup and recovery strategies.
+### Why this combination?
 
----
+* **Scalability**: S3 can handle large amounts of images, videos, and other website assets without capacity limits.
+* **Performance**: CloudFront caches assets closer to users, reducing loading time and improving user experience.
+* **Cost**: S3 is generally cheaper than storing large static assets directly on application servers.
+* **Management**: S3 is fully managed, so there is no need to maintain storage servers.
 
-## 5. Concerns around Cloud Computing
-
-| Concern              | Description                                                                 | Mitigation                                      |
-|----------------------|-----------------------------------------------------------------------------|-------------------------------------------------|
-| **Data Security**    | Data is stored on shared infrastructure controlled by a third party         | Encryption, IAM, security groups, compliance tools |
-| **Compliance**       | Meeting industry regulations (GDPR, HIPAA, PCI-DSS, etc.)                   | Use compliant services and proper configurations |
-| **Vendor Lock-in**   | Difficulty moving applications and data from one provider to another        | Use open standards, multi-cloud strategies, containers |
-| **Downtime / Outages** | Even major providers experience occasional service disruptions            | Multi-AZ / multi-region architectures, SLA review |
-| **Cost Overruns**    | Unexpected high bills due to poor resource management                       | Monitoring, budgets, alerts, right-sizing        |
-| **Internet Dependency** | Requires reliable internet connectivity                                  | Hybrid designs or edge solutions                 |
-
----
-
-## 6. Basic Cloud Architecture
-
-**Simple Architecture Diagram (Text Representation):**
+### Architecture
 
 ```
-                    Internet
-                       |
-                       v
-                 [ Internet Gateway ]
-                       |
-                 +-----+-----+
-                 |           |
-            [ Public        [ Private
-              Subnet ]        Subnet ]
-                 |               |
-            [ EC2 Instance ]  [ RDS / Database ]
-                 |
-            [ Application ]
-                 |
-            [ S3 Bucket ]  <--- Static files / backups
+Users → CloudFront (CDN) → Amazon S3 → Website Assets
 ```
 
-**How the services interact:**
-
-- **Amazon VPC** – Creates an isolated virtual network for the resources.
-- **Amazon EC2** – Provides the compute instances that run the application.
-- **Amazon S3** – Stores static assets, backups, and objects.
-- **Internet Gateway** – Allows communication between the VPC and the internet.
-- **Security Groups / NACLs** – Control inbound and outbound traffic.
-- **Subnets** – Separate public-facing resources from private backend resources.
-
-This is a classic three-tier style architecture commonly used on AWS.
+This architecture separates large static files from the application server and significantly improves website performance and scalability.
 
 ---
 
-## 7. Explanation of Key Terms
+## 3. Security Strategy for 30 Internal Videos
 
-| Term                    | Definition                                                                 | Example / Significance                                      |
-|-------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------|
-| **Fault Tolerance**     | Ability of a system to continue operating even when one or more components fail | Multi-AZ RDS, multiple EC2 instances behind a load balancer |
-| **High Availability**   | System remains operational and accessible for a very high percentage of time | Designing for 99.99% uptime using multiple Availability Zones |
-| **Scalability**         | Ability to handle increased load by adding resources                       | Auto Scaling Groups, Elastic Load Balancing                 |
-| **Cost Optimization**   | Achieving the desired performance at the lowest possible cost              | Right-sizing instances, using Spot/Reserved Instances, S3 lifecycle policies |
-| **Serverless Computing**| Running code without managing servers                                      | AWS Lambda, API Gateway, DynamoDB – pay only for execution time |
+I would use a **private S3 bucket** with the following security measures:
 
-These concepts are fundamental to building reliable, efficient, and cost-effective cloud systems.
+### Encryption
+* Enable S3 server-side encryption (SSE-S3 or SSE-KMS).
+* Encrypt sensitive data both at rest and in transit (HTTPS).
 
----
+### Access Control
+* Keep the bucket private (Block Public Access enabled).
+* Use IAM roles and policies to give only authorized employees access.
+* Follow the **Principle of Least Privilege**.
+* Use temporary access methods such as **presigned URLs** when appropriate.
 
-## 8. Compliance Considerations in Cloud Computing
+### Monitoring
+* Enable logging and monitoring.
+* Use **AWS CloudTrail** to track API activity.
+* Monitor unusual access attempts.
+* Review permissions regularly.
 
-Compliance is critical because organizations remain responsible for their data even when it is stored in the cloud (Shared Responsibility Model).
+### Backup & Protection
+* Enable **S3 Versioning** to protect against accidental deletion or overwrite.
+* Use appropriate backup or cross-region replication options for important videos.
 
-**Key Compliance Requirements:**
-- Data protection laws (GDPR, CCPA, NDPR in Nigeria, etc.)
-- Industry standards (HIPAA for healthcare, PCI-DSS for payments, ISO 27001)
-
-**Measures to Ensure Compliance:**
-
-1. **Data Encryption** – Encrypt data at rest (S3, EBS, RDS) and in transit (TLS/SSL).
-2. **Access Controls** – Use IAM roles, least privilege principle, MFA.
-3. **Audit Trails** – Enable AWS CloudTrail, Config, and CloudWatch Logs.
-4. **Compliance Monitoring** – Use AWS Artifact, Security Hub, and Config Rules.
-5. **Data Residency** – Choose the correct AWS Region to meet local data sovereignty requirements.
-6. **Regular Reviews** – Conduct periodic access reviews and vulnerability assessments.
+This strategy helps prevent unauthorized access, accidental deletion, and data loss.
 
 ---
 
-## 9. Choosing between Cloud and On-Premise for a Java Containerized Application
+## 4. Disaster Recovery Plan
 
-### Decision-Making Process
+A cloud application should have a plan that allows it to recover after a major failure.
 
-I would evaluate the following factors:
+### 1. Backup
+* Regularly back up databases and important files.
+* Store backups separately from the main environment (preferably in another region or account).
+* Test backups regularly to ensure they can be restored.
 
-| Factor          | Cloud Advantage                                      | On-Premise Advantage                          |
-|-----------------|------------------------------------------------------|-----------------------------------------------|
-| **Scalability** | Easy horizontal scaling with Auto Scaling            | Limited by physical hardware                  |
-| **Cost**        | Pay-as-you-go, no large upfront investment           | Predictable long-term cost if utilization is high |
-| **Flexibility** | Rapid provisioning, many managed services            | Full control over hardware and network        |
-| **Reliability** | Built-in multi-AZ redundancy                         | Depends on organization’s own infrastructure  |
-| **Maintenance** | Provider handles hardware and many operational tasks | Full responsibility falls on internal team    |
+### 2. Redundancy
+* Deploy applications across multiple **Availability Zones**.
+* Use redundant databases (Multi-AZ) and storage.
+* Avoid having a single server as the only point of failure.
 
-**My Choice: Cloud (AWS)**
+### 3. Failover
+Use services such as:
+* **Elastic Load Balancer** to distribute traffic and detect unhealthy instances.
+* **Auto Scaling** to automatically replace failed servers.
+* **Route 53** for DNS-based failover and health checks.
 
-**Justification:**
-- The application is containerized (Java), which works extremely well with cloud-native services (ECS, EKS, or Elastic Beanstalk).
-- Peak load of only 500 users is relatively small and can be handled cost-effectively on cloud with auto-scaling.
-- Faster deployment and easier management of containers.
-- Better disaster recovery and high availability options at lower cost.
-- Avoids capital expenditure on servers that may sit idle most of the time.
+### 4. Recovery Steps
+When a disaster occurs:
 
-### Architectural Diagram for Hosting the Application (500 peak users)
+1. Detect the failure (monitoring & alarms).
+2. Redirect users to healthy infrastructure.
+3. Restore data from backups if necessary.
+4. Verify the application is working correctly.
+5. Monitor the recovered environment.
 
-```
-                         Internet Users
-                               |
-                               v
-                    [ Application Load Balancer ]
-                               |
-                 +-------------+-------------+
-                 |                           |
-          [ ECS / EKS Tasks ]         [ ECS / EKS Tasks ]
-          (Java Containers)           (Java Containers)
-                 |                           |
-                 +-------------+-------------+
-                               |
-                    [ Amazon RDS (Multi-AZ) ]
-                               |
-                    [ Amazon S3 ]  (static assets / logs)
+### 5. Testing
+Regularly perform disaster recovery tests (tabletop exercises and actual recovery drills) to make sure backups, failover, and recovery procedures actually work.
 
-Supporting Services:
-- Amazon VPC (Public + Private Subnets)
-- Auto Scaling based on CPU / request count
-- CloudWatch for monitoring and alarms
-- IAM Roles for secure access
-- Secrets Manager / Parameter Store for credentials
-```
-
-**Key Design Decisions:**
-- Use **Amazon ECS** or **EKS** to run the Java containers.
-- Place containers in private subnets for security.
-- Use an **Application Load Balancer** for traffic distribution.
-- Use **RDS Multi-AZ** for the database to achieve high availability.
-- Enable Auto Scaling so the system can handle the 500-user peak efficiently and scale down during low traffic to save cost.
-
-This architecture is cost-effective, scalable, highly available, and suitable for a containerized Java application serving 500 concurrent users.
+**Main Goal:** Minimize downtime and data loss while getting the application back online as quickly as possible.
 
 ---
 
