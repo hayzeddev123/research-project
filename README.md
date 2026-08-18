@@ -174,30 +174,9 @@ I would evaluate the following factors:
 
 ### Architectural Diagram for Hosting the Application (500 peak users)
 
-```
-                         Internet Users
-                               |
-                               v
-                    [ Application Load Balancer ]
-                               |
-                 +-------------+-------------+
-                 |                           |
-          [ ECS / EKS Tasks ]         [ ECS / EKS Tasks ]
-          (Java Containers)           (Java Containers)
-                 |                           |
-                 +-------------+-------------+
-                               |
-                    [ Amazon RDS (Multi-AZ) ]
-                               |
-                    [ Amazon S3 ]  (static assets / logs)
+**Architecture Diagram (created with draw.io):**
 
-Supporting Services:
-- Amazon VPC (Public + Private Subnets)
-- Auto Scaling based on CPU / request count
-- CloudWatch for monitoring and alarms
-- IAM Roles for secure access
-- Secrets Manager / Parameter Store for credentials
-```
+![Java Application Architecture](java%20application.png)
 
 **Key Design Decisions:**
 - Use **Amazon ECS** or **EKS** to run the Java containers.
