@@ -174,9 +174,9 @@ I would evaluate the following factors:
 
 ### Architectural Diagram for Hosting the Application (500 peak users)
 
-**Architecture Diagram (created with draw.io):**
+**Architecture Diagram:**
 
-<img src="java%20application.png" alt="Java Application Architecture" width="800"/>
+<img src="java-ecs-architecture.png" alt="Java Application Architecture" width="900"/>
 
 **Key Design Decisions:**
 - Use **Amazon ECS** or **EKS** to run the Java containers.
