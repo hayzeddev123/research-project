@@ -172,11 +172,9 @@ I would evaluate the following factors:
 - Better disaster recovery and high availability options at lower cost.
 - Avoids capital expenditure on servers that may sit idle most of the time.
 
-### Architectural Diagram for Hosting the Application (500 peak users)
+### Architecture for Hosting the Application (500 peak users)
 
-**Architecture Diagram:**
-
-<img src="java-ecs-architecture.svg" alt="Java Application Architecture" width="900"/>
+Users → Route 53 → Application Load Balancer (public subnets) → Amazon ECS/EKS Java containers in private subnets across AZ-1 and AZ-2 → Amazon RDS Multi-AZ and Amazon S3 for static assets.
 
 **Key Design Decisions:**
 - Use **Amazon ECS** or **EKS** to run the Java containers.
