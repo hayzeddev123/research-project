@@ -176,7 +176,7 @@ I would evaluate the following factors:
 
 **Architecture Diagram (created with draw.io):**
 
-![Java Application Architecture](java%20application.png)
+<img src="java%20application.png" alt="Java Application Architecture" width="800"/>
 
 **Key Design Decisions:**
 - Use **Amazon ECS** or **EKS** to run the Java containers.
