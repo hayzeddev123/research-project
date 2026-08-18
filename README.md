@@ -103,26 +103,6 @@ Compared to traditional data centers, cloud computing offers:
 
 ## 6. Basic Cloud Architecture
 
-**Simple Architecture Diagram (Text Representation):**
-
-```
-                    Internet
-                       |
-                       v
-                 [ Internet Gateway ]
-                       |
-                 +-----+-----+
-                 |           |
-            [ Public        [ Private
-              Subnet ]        Subnet ]
-                 |               |
-            [ EC2 Instance ]  [ RDS / Database ]
-                 |
-            [ Application ]
-                 |
-            [ S3 Bucket ]  <--- Static files / backups
-```
-
 **How the services interact:**
 
 - **Amazon VPC** – Creates an isolated virtual network for the resources.
