@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="1180" viewBox="0 0 560 1180">
+  <defs>
+    <filter id="s" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.1" flood-opacity="0.18"/>
+    </filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4b5563"/>
+    </marker>
+    <style>
+      .t{font-family:Arial,Helvetica,sans-serif}
+      .lbl{font-size:13px;fill:#111827;font-weight:600}
+      .sub{font-size:12px;fill:#374151}
+      .edge{font-size:12px;fill:#4b5563}
+      .title{font-size:15px;fill:#374151;font-weight:600}
+    </style>
+  </defs>
+  <rect width="560" height="1180" fill="#ffffff"/>
+  <g transform="translate(244,18)">
+    <circle cx="22" cy="16" r="13" fill="none" stroke="#111827" stroke-width="2.8"/>
+    <path d="M-2 56c0-14 11-22 24-22s24 8 24 22" fill="none" stroke="#111827" stroke-width="2.8" stroke-linecap="round"/>
+    <circle cx="50" cy="20" r="11" fill="none" stroke="#111827" stroke-width="2.8"/>
+    <path d="M30 58c2-11 11-16 20-16 13 0 24 8 24 20" fill="none" stroke="#111827" stroke-width="2.8" stroke-linecap="round"/>
+    <text x="36" y="80" text-anchor="middle" class="t lbl">Users</text>
+  </g>
+  <line x1="280" y1="102" x2="280" y2="138" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="296" y="126" class="t edge">HTTPS</text>
+  <rect x="70" y="142" width="420" height="980" rx="16" fill="#eef6fb" stroke="#5b8fb8" stroke-width="2"/>
+  <text x="86" y="166" class="t lbl">AWS Cloud</text>
+  <g filter="url(#s)" transform="translate(236,188)">
+    <rect width="88" height="88" rx="14" fill="#5a30b5"/>
+    <path d="M44 14l22 10v16c0 16-9 28-22 34-13-6-22-18-22-34V24z" fill="none" stroke="#fff" stroke-width="3"/>
+    <text x="44" y="56" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" font-weight="700">53</text>
+  </g>
+  <text x="280" y="296" text-anchor="middle" class="t lbl">Route 53</text>
+  <line x1="280" y1="304" x2="280" y2="342" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="296" y="330" class="t edge">Resolve</text>
+  <rect x="96" y="346" width="368" height="752" rx="14" fill="#f7fbff" stroke="#3d6b99" stroke-width="1.8"/>
+  <text x="112" y="370" class="t lbl">VPC (Multi-AZ)</text>
+  <rect x="150" y="386" width="260" height="196" rx="12" fill="#e7f6ea" stroke="#7aa37f" stroke-width="1.4"/>
+  <text x="166" y="410" class="t lbl">Public Subnets</text>
+  <g filter="url(#s)" transform="translate(236,424)">
+    <circle cx="44" cy="44" r="40" fill="#fff" stroke="#8c4fff" stroke-width="3"/>
+    <rect x="30" y="20" width="28" height="18" rx="3" fill="none" stroke="#8c4fff" stroke-width="2.6"/>
+    <path d="M44 38v10" stroke="#8c4fff" stroke-width="2.6"/>
+    <path d="M28 62h32M28 62v-10h8M52 52h8v10" fill="none" stroke="#8c4fff" stroke-width="2.6"/>
+    <circle cx="32" cy="66" r="3" fill="#8c4fff"/>
+    <circle cx="44" cy="66" r="3" fill="#8c4fff"/>
+    <circle cx="56" cy="66" r="3" fill="#8c4fff"/>
+  </g>
+  <text x="280" y="558" text-anchor="middle" class="t lbl">Application Load Balancer</text>
+  <line x1="280" y1="586" x2="280" y2="626" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="296" y="614" class="t edge">Distribute traffic</text>
+  <rect x="118" y="630" width="324" height="448" rx="12" fill="#f8f0e4" stroke="#d0b48a" stroke-width="1.4"/>
+  <text x="134" y="654" class="t lbl">Private Subnets</text>
+  <g filter="url(#s)" transform="translate(236,672)">
+    <rect width="88" height="88" rx="14" fill="#ed7100"/>
+    <path d="M44 18l22 12v24L44 66 22 54V30z" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M44 30l14 8v16L44 62 30 54V38z" fill="none" stroke="#fff" stroke-width="2.4"/>
+  </g>
+  <text x="280" y="782" text-anchor="middle" class="t lbl">Amazon ECS / EKS</text>
+  <line x1="220" y1="776" x2="180" y2="820" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <line x1="340" y1="776" x2="380" y2="820" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <g transform="translate(136,832)">
+    <rect width="88" height="56" rx="6" fill="none" stroke="#ed7100" stroke-width="3"/>
+    <path d="M10 10v36M18 10v36M26 10v36M34 10v36M42 10v36M50 10v36M58 10v36M66 10v36M74 10v36" stroke="#ed7100" stroke-width="2.2"/>
+  </g>
+  <text x="180" y="910" text-anchor="middle" class="t lbl">Java Container</text>
+  <text x="180" y="926" text-anchor="middle" class="t sub">AZ-1</text>
+  <g transform="translate(336,832)">
+    <rect width="88" height="56" rx="6" fill="none" stroke="#ed7100" stroke-width="3"/>
+    <path d="M10 10v36M18 10v36M26 10v36M34 10v36M42 10v36M50 10v36M58 10v36M66 10v36M74 10v36" stroke="#ed7100" stroke-width="2.2"/>
+  </g>
+  <text x="380" y="910" text-anchor="middle" class="t lbl">Java Container</text>
+  <text x="380" y="926" text-anchor="middle" class="t sub">AZ-2</text>
+  <path d="M180 934 L180 978" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <path d="M380 934 L380 978" stroke="#4b5563" stroke-width="1.6" marker-end="url(#ah)"/>
+  <path d="M180 950 H380" stroke="#4b5563" stroke-width="1.4"/>
+  <text x="206" y="946" class="t edge">Query</text>
+  <text x="292" y="946" class="t edge">Store / read</text>
+  <path d="M210 950 L180 978" stroke="#4b5563" stroke-width="1.4" marker-end="url(#ah)"/>
+  <path d="M350 950 L380 978" stroke="#4b5563" stroke-width="1.4" marker-end="url(#ah)"/>
+  <g filter="url(#s)" transform="translate(136,984)">
+    <rect width="88" height="88" rx="14" fill="#2e27ad"/>
+    <ellipse cx="44" cy="44" rx="18" ry="12" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M26 44v8c0 7 8 12 18 12s18-5 18-12v-8" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M44 20v10M44 58v10M20 44h10M58 44h10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="180" y="1092" text-anchor="middle" class="t lbl">Amazon RDS</text>
+  <text x="180" y="1108" text-anchor="middle" class="t sub">Multi-AZ</text>
+  <g filter="url(#s)" transform="translate(336,984)">
+    <rect width="88" height="88" rx="14" fill="#3f8624"/>
+    <path d="M22 58c8-16 16-24 28-24s20 8 28 24" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M22 58h56v10H22z" fill="none" stroke="#fff" stroke-width="3"/>
+    <path d="M58 34v8" stroke="#fff" stroke-width="3"/>
+  </g>
+  <text x="380" y="1092" text-anchor="middle" class="t lbl">Amazon S3</text>
+  <text x="380" y="1108" text-anchor="middle" class="t sub">Static Assets</text>
+  <text x="280" y="1158" text-anchor="middle" class="t title">Java Containerized Application on AWS (500 Peak Users)</text>
+</svg>
