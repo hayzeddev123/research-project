@@ -174,6 +174,8 @@ I would evaluate the following factors:
 
 ### Architecture for Hosting the Application (500 peak users)
 
+<img src="java-ecs-architecture.svg" alt="Java Containerized Application on AWS (500 Peak Users)" width="520">
+
 Users → Route 53 → Application Load Balancer (public subnets) → Amazon ECS/EKS Java containers in private subnets across AZ-1 and AZ-2 → Amazon RDS Multi-AZ and Amazon S3 for static assets.
 
 **Key Design Decisions:**
